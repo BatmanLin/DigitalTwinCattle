@@ -10,7 +10,7 @@ import pandas as pd
 
 # import pickled data
 cattle_df = pd.read_pickle("HusbandryData/cattle_pickle.pkl")
-print(cattle_df)
+#print(cattle_df)
 
 # save data from the first cow to csv to inspect.
 cowid2_df = cattle_df[cattle_df["cowid"]==2.0]
