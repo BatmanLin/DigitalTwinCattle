@@ -34,10 +34,9 @@ cow_details_df = pd.read_csv(data_dir + animal_info_name)
 breed_dict = create_category_dict("Breed", "Tag#", cow_details_df)
 coat_dict = create_category_dict("Coat colour", "Tag#", cow_details_df)
 docility_dict = create_category_dict("Docility score", "Tag#", cow_details_df)
-# select cows to be plotted
+# select cows to be plotted, cow_category is the descriptor for the plot title.
 cow_category = "Red"
-plot_cows = [str(x) for x in coat_dict[cow_category]]
-
+plot_cows = [str(x) for x in coat_dict["Red"]]
 
 # create date range for extracting data from excel
 total_date_list = pd.date_range(datetime(2018, 10, 19), periods=76).tolist()
@@ -62,7 +61,6 @@ for date in total_date_list:
     else:
         other_data[date_str] = date_df
 
-print(heat_data)
 
 # define states to run and default x_axis
 # state_indeces = [1, 2, 3, 4, 5, 6, 7, 8, 9, 15]
