@@ -25,7 +25,6 @@ def average_day(data, state):
 
     return average_day
 
-
 def average_cows(per_hour_df):
     daily_average_mins = []
     for time in per_hour_df.columns:
