@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 from average_24hr import *
 
-# directary of data
+# directary of animal state data and anaimal information
 data_dir = 'HeatData/csvs_brisbane_18_10_18__2_1_19_tags/'
 file_name = 'DailyCowStates_Brisbane Valley Feedlot_'
 
@@ -37,8 +37,7 @@ for date in total_date_list:
         other_data[date_str] = date_df
 
 # define states to run and default x_axis
-#state_indeces = [1, 4, 7, 8, 15]
-state_indeces = [0, 2, 3, 5, 6, 9]
+state_indeces = [1, 2, 3, 4, 5, 6, 7, 8, 9, 15]
 x_axis = list(range(1,25))
 
 # create plots for each state
@@ -46,8 +45,12 @@ for state_index in state_indeces:
     print("Plotting for " + str(state_data[state_index]))
     # calculate the average day for each dataset
     ave_day_other = average_day(other_data, state_index)
+    # rotate list to transfer times to GMT+10
+    ave_day_other = ave_day_other[-10:] + ave_day_other[:-10]
     print("First dataset complete")
     ave_day_heat = average_day(heat_data, state_index)
+    # again adjust timing
+    ave_day_heat = ave_day_heat[-10:] + ave_day_heat[:-10]
     print("Second dataset complete")
 
     # plot the two data sets
